@@ -1,0 +1,562 @@
+#:import MDFloatLayout kivymd.uix.floatlayout.MDFloatLayout
+#:import MDBoxLayout kivymd.uix.boxlayout.MDBoxLayout
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+#:import MDRectangleFlatButton kivymd.uix.button.MDRectangleFlatButton
+#:import MDDataTable kivymd.uix.datatables.MDDataTable
+#:import MDTopAppBar kivymd.uix.toolbar
+#:import dp kivy.metrics.dp
+
+<RootWidget>:
+    ExamScreen:
+        name: "assessments"
+    AssignmentScreen:
+        name: "laboratory"
+    ProjectScreen:
+        name: "performance"
+    SummaryScreen:
+        name: "results"
+
+<ExamScreen>:
+    name: 'assessments'
+    MDScreen:
+        ScrollView:
+            bar_width:0
+            MDBoxLayout:
+                orientation:'vertical'
+                adaptive_height:True
+    MDLabel:
+        text:'MIDTERM EXAM'
+        font_style:"H5"
+        bold: True
+        halign: 'center'
+        pos_hint:{'center_y': 0.83}
+    MDLabel:
+        text:'FINAL EXAM'
+        font_style:"H5"
+        bold: True
+        halign: 'center'
+        pos_hint:{'center_y': 0.47}
+
+    MDTopAppBar:
+        title: "Exam Results"
+        pos_hint: {"top": 1}
+        left_action_items: [["menu", lambda x: None]]
+        md_bg_color: 'darkgreen'
+        elevation: 0
+
+    MDRectangleFlatButton:
+        text: "Save"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.36, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_release: app.show_alert_dialog1()
+    MDRectangleFlatButton:
+        text: "Next"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.66, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_press: app.callback1()
+
+    MDTextField:
+        id: midterm_written
+        hint_text: "Mid Written"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.3, 'center_y': 0.73}
+        size_hint_x:None
+        width:141
+
+    MDTextField:
+        id: midterm_handson
+        hint_text: "Mid Hands-On"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.3, 'center_y': 0.58}
+        size_hint_x:None
+        width:141
+    MDTextField:
+        id: final_written
+        hint_text: "Final Written"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.3, 'center_y': 0.37}
+        size_hint_x:None
+        width:141
+    MDTextField:
+        id: final_handson
+        hint_text: "Final Hands-On"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.3, 'center_y': 0.22}
+        size_hint_x:None
+        width:141
+    MDTextField:
+        id: midterm_written_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.74}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        width:110
+    MDTextField:
+        id: midterm_handson_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.59}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: final_written_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        max_text_length: 3
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.38}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: final_handson_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.23}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+
+<AssignmentScreen>
+    name: "laboratory"
+    MDScreen:
+        ScrollView:
+            bar_width:0
+            MDBoxLayout:
+                orientation:'vertical'
+                padding:'20dp'
+                adaptive_height:True
+
+    MDTopAppBar:
+        title: "Laboratory"
+        pos_hint: {"top": 1}
+        left_action_items: [["menu", lambda x: None]]
+        md_bg_color: 'darkgreen'
+        elevation: 0
+
+    MDRectangleFlatButton:
+        text: "Save"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.36, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_release: app.show_alert_dialog2()
+    MDRectangleFlatButton:
+        text: "Next"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.66, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_press: app.callback2()
+
+    MDLabel:
+        text:'   ASSIGNMENTS'
+        font_style:"H5"
+        bold: True
+        pos_hint:{'center_y': 0.8}
+
+    MDTextField:
+        id: mco1
+        hint_text: "MCO1"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.69}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: mco3
+        hint_text: "MCO3"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.54}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: mco5
+        hint_text: "MCO5"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        max_text_length: 3
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.39}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: mco7
+        hint_text: "MCO7"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.24}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: assignment_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.805}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        width:110
+    MDTextField:
+        id: mco2
+        hint_text: "MCO2"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.615}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: mco4
+        hint_text: "MCO4"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        max_text_length: 3
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.465}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+    MDTextField:
+        id: mco6
+        hint_text: "MCO6"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.315}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        size_hint_x:None
+        width:110
+
+<ProjectScreen>
+    name: "performance"
+    MDScreen:
+        ScrollView:
+            bar_width:0
+            MDBoxLayout:
+                orientation:'vertical'
+                padding:'20dp'
+                adaptive_height:True
+
+    MDLabel:
+        text:'       PROJECT'
+        font_style:"H5"
+        bold: True
+        pos_hint:{'center_y': 0.8}
+    MDTextField:
+        id: project_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.7, 'center_y': 0.81}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        width:110
+
+    MDLabel:
+        text: "       EXERCISES"
+        font_style:"H5"
+        bold: True
+        pos_hint:{'center_y': 0.45}
+    MDTextField:
+        id: exercises_multiplier
+        hint_text: "Multiplier"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        mode: "rectangle"
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.7, 'center_y': 0.46}
+        size_hint_x:0.32
+        size_hint_y:0.1
+        width:110
+
+    MDTopAppBar:
+        title: "Performance"
+        pos_hint: {"top": 1}
+        left_action_items: [["menu", lambda x: None]]
+        md_bg_color: 'darkgreen'
+        elevation: 0
+
+    MDRectangleFlatButton:
+        text: "Save"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.36, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_release: app.show_alert_dialog3()
+    MDRectangleFlatButton:
+        text: "Compute"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.66, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_press: app.callback3()
+
+    MDTextField:
+        id: capsule
+        hint_text: "Capsule"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.5, 'center_y': 0.70}
+        size_hint_x:None
+        width:141
+    MDTextField:
+        id: proposal
+        hint_text: "Proposal"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.5, 'center_y': 0.63}
+        size_hint_x:None
+        width:141
+    MDTextField:
+        id: final
+        hint_text: "Final"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.5, 'center_y': 0.56}
+        size_hint_x:None
+        width:141
+
+    MDTextField:
+        id: ex1
+        hint_text: "Lab Ex1"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.36}
+        size_hint: 0.32, 0.1
+        font_size: 13.5
+        width:110
+    MDTextField:
+        id: ex3
+        hint_text: "Lab Ex3"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        max_text_length: 3
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.27}
+        size_hint: 0.32, 0.1
+        font_size: 13.5
+        width:110
+    MDTextField:
+        id: ex5
+        hint_text: "Lab Ex5"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.265, 'center_y': 0.18}
+        size_hint: 0.32, 0.1
+        font_size: 13.5
+        width:110
+    MDTextField:
+        id: ex2
+        hint_text: "Lab Ex2"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.36}
+        size_hint: 0.32, 0.1
+        font_size: 13.5
+        width:110
+    MDTextField:
+        id: ex4
+        hint_text: "Lab Ex4"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        max_text_length: 3
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.27}
+        size_hint: 0.32, 0.1
+        font_size: 13.5
+        width:110
+    MDTextField:
+        id: ex6
+        hint_text: "Lab Ex6"
+        helper_text_mode: "persistent"
+        required: True
+        icon_right: "percent"
+        input_filter: 'int'
+        icon_right_color: app.theme_cls.primary_color
+        pos_hint:{'center_x': 0.75, 'center_y': 0.18}
+        size_hint: 0.32, 0.1
+        font_size: 13.5
+        width:110
+
+<SummaryScreen>
+    name: "results"
+    MDScreen:
+        ScrollView:
+            bar_width:0
+            MDBoxLayout:
+                orientation:'vertical'
+                padding:'20dp'
+                adaptive_height:True
+
+    MDLabel:
+        text:'Grade'
+        font_style:"H5"
+        bold: True
+        font_size: '20sp'
+        pos_hint:{'center_x': 0.785, 'center_y': 0.2725}
+    MDLabel:
+        text:'Transmutation'
+        font_style:"H5"
+        bold: True
+        font_size: '20sp'
+        pos_hint:{'center_x': 0.675, 'center_y': 0.19}
+    MDRectangleFlatButton:
+        text: "Exit"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.66, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_press: app.stop()
+    MDRectangleFlatButton:
+        text: "Home"
+        md_bg_color: 'green'
+        text_color: "white"
+        font_size: "17sp"
+        pos_hint:{'center_x': 0.36, 'center_y': 0.09}
+        elevation: 2
+        size_hint: (0.145, 0.06)
+        on_press: app.callback4()
+        on_release: app.clear_text_fields()
+
+    MDTopAppBar:
+        title: "Results"
+        pos_hint: {"top": 1}
+        left_action_items: [["menu", lambda x: None]]
+        md_bg_color: 'darkgreen'
+        elevation: 0
+    MDBoxLayout:
+        pos_hint: {"center_x": 0.5}
+        adaptive_size: True
+        padding: "24dp"
+        spacing: "24dp"
+
+
+
